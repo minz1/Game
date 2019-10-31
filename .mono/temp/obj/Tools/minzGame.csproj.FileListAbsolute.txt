@@ -1,0 +1,5 @@
+C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\minzGame.csprojAssemblyReference.cache
+C:\Users\minz1\Documents\minzGame\.mono\temp\bin\Tools\minzGame.dll
+C:\Users\minz1\Documents\minzGame\.mono\temp\bin\Tools\minzGame.pdb
+C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\minzGame.dll
+C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\minzGame.pdb
