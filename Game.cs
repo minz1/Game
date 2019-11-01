@@ -2,12 +2,14 @@ using Godot;
 
 public class Game : Node2D
 {
-    private Label _label;
+    private Label _directionLabel;
+    private Label _groundLabel;
     private Player _player;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
-        _label = GetNode<Label>("DirectionLabel");
+        _directionLabel = GetNode<Label>("DirectionLabel");
+        _groundLabel = GetNode<Label>("GroundLabel");
         _player = GetNode<Player>("Player");
     }
 
@@ -15,17 +17,22 @@ public class Game : Node2D
     public override void _Process(float delta) {
         switch(_player.PlayerDirection) {
             case Direction.Up:
-                _label.SetText("UP");
+                _directionLabel.SetText("UP");
                 break;
             case Direction.Down:
-                _label.SetText("DOWN");
+                _directionLabel.SetText("DOWN");
                 break;
             case Direction.Left:
-                _label.SetText("LEFT");
+                _directionLabel.SetText("LEFT");
                 break;
             case Direction.Right:
-                _label.SetText("RIGHT");
+                _directionLabel.SetText("RIGHT");
                 break;
+        }
+        if (_player.IsGrounded) {
+            _groundLabel.SetText("ON FLOOR");
+        } else {
+            _groundLabel.SetText("IN AIR");
         }
     }
 }
