@@ -3,8 +3,9 @@ using Godot;
 public class Player : KinematicBody2D
 {
 	private Direction _direction = Direction.Right;
-	const int WALK_SPEED = 200;
-	const float GRAVITY = 25000.0f;
+	const int WALK_SPEED = 500;
+	const float GRAVITY = 9000.0f;
+	const float JUMP_HEIGHT = 1400.0f;
 	Vector2 _velocity = new Vector2();
 	private AnimationPlayer _animPlayer;
 	private Sprite _sprite;
@@ -23,37 +24,31 @@ public class Player : KinematicBody2D
 	}
 
 	private void _jump() {
-		_velocity.y -= 6000.0f;
-		// TODO: This jump doesn't feel very good. Tweak the math to be better.
+		_velocity.y -= JUMP_HEIGHT;
 	}
 
-	public void _getInput() {
-		_velocity = new Vector2();
-
+	private void _jumpCut() {
+		if (_velocity.y < 0) {
+			_velocity.y -= (_velocity.y * 0.4f);
+		}
+	}
+	private void _runPlayerControls() {
 		if (Input.IsActionPressed("down")) {
 			_direction = Direction.Down;
 		}
 
-		if (Input.IsActionPressed("up")) {
-			_direction = Direction.Up;
-
-			if (IsGrounded) {
-				_jump();
-			}
-		}
-
 		if (Input.IsActionPressed("right")) {
-			_velocity.x = WALK_SPEED;
 			_direction = Direction.Right;
+			_velocity.x = WALK_SPEED;
 		} else if (Input.IsActionPressed("left")) {
-			_velocity.x = -WALK_SPEED;
 			_direction = Direction.Left;
+			_velocity.x = -WALK_SPEED;
 		} else {
 			_velocity.x = 0;
 		}
 	}
 
-	private void _animate() {
+	private void _runAnimations() {
         if (Input.IsActionPressed("right") || Input.IsActionPressed("left")) {
             switch (_direction) {
                 case Direction.Up:
@@ -91,7 +86,15 @@ public class Player : KinematicBody2D
     }
 
 	private void _runGravity(float delta) {
-		_velocity.y += delta * GRAVITY;
+		if (IsGrounded) {
+			_velocity.y = 0;
+		} else {
+			if (_velocity.y >= 0) {
+				_velocity.y += delta * GRAVITY;
+			} else {
+				_velocity.y += delta * GRAVITY * 0.55f;
+			}
+		}
 	}
 
     // Called when the node enters the scene tree for the first time.
@@ -103,9 +106,28 @@ public class Player : KinematicBody2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta) {
-     	_getInput();
-		_runGravity(delta);
+		_runPlayerControls();
+
+		if (! IsGrounded) {
+			_runGravity(delta);
+		}
      	_velocity = MoveAndSlide(_velocity); 
-		_animate();
+		_runAnimations();
+	}
+
+	public override void _Input(InputEvent @event) {
+		if (@event.IsActionPressed("up")) {
+			_direction = Direction.Up;
+
+			if (IsGrounded) {
+				_jump();
+			}
+		}
+
+		if (! IsGrounded) {
+			if (@event.IsActionReleased("up")) {
+				_jumpCut();
+			}
+		}
 	}
 }
