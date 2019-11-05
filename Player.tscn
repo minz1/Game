@@ -86,9 +86,6 @@ script = ExtResource( 2 )
 position = Vector2( 417.765, 199.18 )
 collision_layer = 2
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="animPlayer" type="AnimationPlayer" parent="Game/Player"]
 playback_speed = 3.0
@@ -114,6 +111,11 @@ enabled = true
 cast_to = Vector2( 0, 35 )
 collide_with_areas = true
 
+[node name="Camera2D" type="Camera2D" parent="Game/Player"]
+current = true
+limit_top = 0
+limit_bottom = 0
+
 [node name="DirectionLabel" type="Label" parent="Game"]
 margin_left = 56.0
 margin_top = 57.0
@@ -121,7 +123,7 @@ margin_right = 136.0
 margin_bottom = 74.0
 
 [node name="Ground" type="StaticBody2D" parent="Game"]
-position = Vector2( 0, -1.67017 )
+position = Vector2( 0, -0.309818 )
 collision_mask = 2
 __meta__ = {
 "_edit_group_": true

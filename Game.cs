@@ -8,6 +8,7 @@ public class Game : Node2D
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
+        // gets our labels and player nodes
         _directionLabel = GetNode<Label>("DirectionLabel");
         _groundLabel = GetNode<Label>("GroundLabel");
         _player = GetNode<Player>("Player");
@@ -15,7 +16,8 @@ public class Game : Node2D
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta) {
-        switch(_player.PlayerDirection) {
+        // displays our current direction
+        switch(_player.Direction) {
             case Direction.Up:
                 _directionLabel.SetText("UP");
                 break;
@@ -29,7 +31,9 @@ public class Game : Node2D
                 _directionLabel.SetText("RIGHT");
                 break;
         }
-        if (_player.IsGrounded) {
+
+        // displays our aerial state
+        if (_player.IsGrounded()) {
             _groundLabel.SetText("ON FLOOR");
         } else {
             _groundLabel.SetText("IN AIR");

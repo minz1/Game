@@ -1,12 +1,5 @@
 using Godot;
 
-public enum Direction {
-    Up,
-    Down,
-    Left,
-    Right
-};
-
 public class Scene : Node
 {
     // Called when the node enters the scene tree for the first time.
@@ -21,3 +14,16 @@ public class Scene : Node
 //      
 //  }
 }
+
+public enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+};
+
+public enum PlayerMovementState {
+    Still,
+    Walking,
+    Sprinting
+};
