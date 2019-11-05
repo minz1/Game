@@ -83,6 +83,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="Game"]
+editor/display_folded = true
 position = Vector2( 462.192, 184.9 )
 collision_layer = 2
 script = ExtResource( 3 )
@@ -105,12 +106,10 @@ hframes = 8
 frame = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
-visible = false
 position = Vector2( 74.7368, -4.21049 )
 shape = SubResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Game/Player"]
-visible = false
 position = Vector2( 75.63, 3.78149 )
 enabled = true
 cast_to = Vector2( 0, 35 )
@@ -125,13 +124,8 @@ drag_margin_left = 0.65
 drag_margin_right = 0.65
 editor_draw_limits = true
 
-[node name="DirectionLabel" type="Label" parent="Game"]
-margin_left = 56.0
-margin_top = 57.0
-margin_right = 136.0
-margin_bottom = 74.0
-
 [node name="Ground" type="StaticBody2D" parent="Game"]
+editor/display_folded = true
 position = Vector2( 0, -0.309818 )
 collision_mask = 2
 __meta__ = {
@@ -145,9 +139,3 @@ texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
 polygon = PoolVector2Array( -19.5402, 498.133, 373.708, 497.75, 373.428, 446.976, 381.398, 447.022, 381.352, 440.711, 785.58, 438.592, 785.487, 443.936, 796.452, 443.797, 796.314, 519.619, 1045.29, 518.606, 1045.46, 616.513, -19.584, 616.573 )
-
-[node name="GroundLabel" type="Label" parent="Game"]
-margin_left = 66.3231
-margin_top = 87.4258
-margin_right = 106.323
-margin_bottom = 101.426
