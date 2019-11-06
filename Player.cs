@@ -8,8 +8,8 @@ public class Player : KinematicBody2D
 	private const float Gravity = 9000.0f;
 	private const float MaxJumpHeight = 1400.0f;
 
-	private int CurrentHealth;
-	private int MaximumHealth;
+	private int CurrentHealth = 69;
+	private int MaximumHealth = 100;
 
 	private Direction PDirection = Direction.Right;
 	private PlayerMovementState PMovementState = PlayerMovementState.Still;
