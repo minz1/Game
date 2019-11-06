@@ -14,16 +14,3 @@ public class Scene : Node
 //      
 //  }
 }
-
-public enum Direction {
-    Up,
-    Down,
-    Left,
-    Right
-};
-
-public enum PlayerMovementState {
-    Still,
-    Walking,
-    Sprinting
-};

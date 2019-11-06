@@ -3,8 +3,8 @@
 [ext_resource path="res://Scene.cs" type="Script" id=1]
 [ext_resource path="res://Game.cs" type="Script" id=2]
 [ext_resource path="res://Player.cs" type="Script" id=3]
-[ext_resource path="res://link.png" type="Texture" id=4]
-[ext_resource path="res://ground.png" type="Texture" id=5]
+[ext_resource path="res://assets/link.png" type="Texture" id=4]
+[ext_resource path="res://assets/ground.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "walkDown"
@@ -83,9 +83,12 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="Game"]
-position = Vector2( 417.765, 199.18 )
+position = Vector2( 462.192, 184.9 )
 collision_layer = 2
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="animPlayer" type="AnimationPlayer" parent="Game/Player"]
 playback_speed = 3.0
@@ -112,15 +115,13 @@ cast_to = Vector2( 0, 35 )
 collide_with_areas = true
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player"]
+position = Vector2( 73.6552, 4.92703 )
 current = true
 limit_top = 0
 limit_bottom = 0
-
-[node name="DirectionLabel" type="Label" parent="Game"]
-margin_left = 56.0
-margin_top = 57.0
-margin_right = 136.0
-margin_bottom = 74.0
+drag_margin_left = 0.65
+drag_margin_right = 0.65
+editor_draw_limits = true
 
 [node name="Ground" type="StaticBody2D" parent="Game"]
 position = Vector2( 0, -0.309818 )
@@ -136,9 +137,3 @@ texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/Ground"]
 polygon = PoolVector2Array( -19.5402, 498.133, 373.708, 497.75, 373.428, 446.976, 381.398, 447.022, 381.352, 440.711, 785.58, 438.592, 785.487, 443.936, 796.452, 443.797, 796.314, 519.619, 1045.29, 518.606, 1045.46, 616.513, -19.584, 616.573 )
-
-[node name="GroundLabel" type="Label" parent="Game"]
-margin_left = 66.3231
-margin_top = 87.4258
-margin_right = 106.323
-margin_bottom = 101.426
