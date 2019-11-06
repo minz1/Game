@@ -3,8 +3,9 @@ using Godot;
 public class Sign : StaticBody2D, IInteractable
 {
     private DialogueBox DBox;
-    
-    public void OnInteract() {
+
+    public void OnInteract()
+    {
         DBox.DisplayText("Hello, world! Finally got these signs working. Thank GOD.", true);
     }
 
@@ -14,9 +15,9 @@ public class Sign : StaticBody2D, IInteractable
         DBox = GetNode<DialogueBox>("../CanvasLayer/GUI/DialogueBox");
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //  public override void _Process(float delta)
+    //  {
+    //      
+    //  }
 }

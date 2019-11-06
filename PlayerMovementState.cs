@@ -1,6 +1,7 @@
 using Godot;
 
-public enum PlayerMovementState {
+public enum PlayerMovementState
+{
     Still,
     Walking,
     Sprinting

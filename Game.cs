@@ -16,7 +16,8 @@ public class Game : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        if (HPBar.HP != ThePlayer.Health) {
+        if (HPBar.HP != ThePlayer.Health)
+        {
             HPBar.HP = ThePlayer.Health;
         }
     }

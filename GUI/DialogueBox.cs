@@ -19,20 +19,23 @@ public class DialogueBox : Panel
     // boolean to check if the text is currently being printed out.
     private bool IsWriting = false;
 
-    private void Clear() {
+    private void Clear()
+    {
         TextBox.Text = "";
     }
 
-    public void DisplayText(String text, bool slowWrite) {
-        if (! Visible)
-            {
+    public void DisplayText(String text, bool slowWrite)
+    {
+        if (!Visible)
+        {
             // this is the max amount of characters we can show before it looks wack
             if (text.Length < 490)
             {
                 Visible = true;
 
                 // this kicks off the slow writing process
-                if (slowWrite) {
+                if (slowWrite)
+                {
                     // sets our IsWriting status to true
                     IsWriting = true;
                     // sets our full slow text variable
@@ -60,7 +63,8 @@ public class DialogueBox : Panel
     public void _OnTimerTimeout()
     {
         // checks to make sure our index doesn't exceed array bounds
-        if (CurrentTextIndex < SlowTextArr.Length) {
+        if (CurrentTextIndex < SlowTextArr.Length)
+        {
             // adds the character to our text
             TextBox.Text += SlowTextArr[CurrentTextIndex++];
         }
@@ -90,9 +94,9 @@ public class DialogueBox : Panel
     public override void _Input(InputEvent @event)
     {
         if (@event.IsActionPressed("click"))
-		{
+        {
             // check to make sure we're being displayed
-			if (Visible)
+            if (Visible)
             {
                 // if we're writing, skip to the end and display the entire text.
                 if (IsWriting)
