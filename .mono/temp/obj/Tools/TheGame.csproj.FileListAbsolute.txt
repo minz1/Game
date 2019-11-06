@@ -1,5 +1,0 @@
-C:\Users\minz1\Documents\minzGame\.mono\temp\bin\Tools\TheGame.dll
-C:\Users\minz1\Documents\minzGame\.mono\temp\bin\Tools\TheGame.pdb
-C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\TheGame.csprojAssemblyReference.cache
-C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\TheGame.dll
-C:\Users\minz1\Documents\minzGame\.mono\temp\obj\Tools\TheGame.pdb
