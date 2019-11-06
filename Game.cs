@@ -9,7 +9,7 @@ public class Game : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        HPBar = GetNode<HealthBar>("CanvasLayer/GUI/Bars/HealthBar");
+        HPBar = GetNode<HealthBar>("CanvasLayer/GUI/Rows/Bars/HealthBar");
         ThePlayer = GetNode<Player>("Player");
     }
 

@@ -22,7 +22,9 @@ public class Player : KinematicBody2D
 	doesn't work well enough for our purposes. this raycast is pointing down just below
 	the player character's sprite, which is enough to check if it's touching the ground
 	*/
-	private RayCast2D Ray;
+	private RayCast2D GroundRay;
+	
+	private RayCast2D InteractRay;
 
 	public Direction Direction
 	{
@@ -48,7 +50,7 @@ public class Player : KinematicBody2D
         /* as explained above, the ray is right below the player, so it's a good way
         of making sure we are truly touching the ground
         */
-        return Ray.IsColliding();
+        return GroundRay.IsColliding();
     }
 
     /* in godot, a negative velocity means going UP
@@ -65,6 +67,26 @@ public class Player : KinematicBody2D
 		if (Velocity.y < 0)
 		{
 			Velocity.y = (Velocity.y * 0.6f);
+		}
+	}
+
+	// this method is run whenever a player presses the interr=act key
+	private void Interact()
+	{
+		// if our ray is touching an object on the interactable layer, proceed
+		if (InteractRay.IsColliding())
+		{
+			// this is object that we're colliding with
+			object collider = InteractRay.GetCollider();
+
+			// if our object implements the Interactable interface, then continue
+			if (collider is IInteractable) {
+				// casts to an interactable interface
+				IInteractable interactableObject = (IInteractable)collider;
+
+				// runs the OnInteract method for whatever the player is near
+				interactableObject.OnInteract();
+			}
 		}
 	}
 
@@ -184,12 +206,11 @@ public class Player : KinematicBody2D
 		// gets our child nodes all loaded up for use
 		AnimPlayer = GetNode<AnimationPlayer>("animPlayer");
 		Sprite = GetNode<Sprite>("Sprite");
-		Ray = GetNode<RayCast2D>("RayCast2D");
+		GroundRay = GetNode<RayCast2D>("GroundRCast");
+		InteractRay = GetNode<RayCast2D>("InteractCast");
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-	{
+	public override void _PhysicsProcess(float delta) {
 		// runs the player control handler method on a loop
 		RunPlayerControls();
 
@@ -201,6 +222,11 @@ public class Player : KinematicBody2D
 
 		// method used to actually apply this velocity to our player.
      	Velocity = MoveAndSlide(Velocity);
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+	{
 		 // runs the animation loop
 		RunAnimations();
 	}
@@ -227,6 +253,12 @@ public class Player : KinematicBody2D
 			{
 				JumpCut();
 			}
+		}
+
+		// run the interact method if the interact key is pressed
+		if (@event.IsActionPressed("interact"))
+		{
+			Interact();
 		}
 	}
 }
