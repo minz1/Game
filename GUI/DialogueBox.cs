@@ -28,6 +28,11 @@ public class DialogueBox : Panel
     {
         if (!Visible)
         {
+            // this lines makes it so we don't pause, EVER.
+            PauseMode = Node.PauseModeEnum.Process;
+            // pause the game
+            GetTree().Paused = true;
+
             // this is the max amount of characters we can show before it looks wack
             if (text.Length < 490)
             {
@@ -111,6 +116,10 @@ public class DialogueBox : Panel
                 {
                     Visible = false;
                     Clear();
+                    // make it so we can be paused normally again
+                    PauseMode = Node.PauseModeEnum.Inherit;
+                    // now unpause the game
+                    GetTree().Paused = false;
                 }
             }
         }

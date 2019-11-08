@@ -9,11 +9,10 @@
 [ext_resource path="res://assets/ground.png" type="Texture" id=7]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.6905, 18.1035 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "walkDown"
+[sub_resource type="Animation" id=2]
 length = 2.5
 loop = true
 tracks/0/type = "value"
@@ -29,8 +28,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "walkLeft"
+[sub_resource type="Animation" id=3]
 length = 2.5
 loop = true
 tracks/0/type = "value"
@@ -46,8 +44,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "walkRight"
+[sub_resource type="Animation" id=4]
 length = 2.5
 loop = true
 tracks/0/type = "value"
@@ -63,7 +60,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.5
 loop = true
 tracks/0/type = "value"
@@ -79,7 +76,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 29.8948, 40.8947 )
 
 [node name="Scene" type="Node"]
@@ -99,7 +96,7 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Sign"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Player" type="KinematicBody2D" parent="Game"]
 position = Vector2( 440.742, 199.994 )
@@ -111,10 +108,10 @@ __meta__ = {
 
 [node name="animPlayer" type="AnimationPlayer" parent="Game/Player"]
 playback_speed = 3.0
-anims/walkDown = SubResource( 1 )
-anims/walkLeft = SubResource( 2 )
-anims/walkRight = SubResource( 3 )
-anims/walkUp = SubResource( 4 )
+anims/walkDown = SubResource( 2 )
+anims/walkLeft = SubResource( 3 )
+anims/walkRight = SubResource( 4 )
+anims/walkUp = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Game/Player"]
 position = Vector2( 76.4931, -0.435085 )
@@ -125,7 +122,7 @@ frame = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
 position = Vector2( 74.7368, -4.21049 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="GroundRCast" type="RayCast2D" parent="Game/Player"]
 position = Vector2( 75.63, 3.78149 )
